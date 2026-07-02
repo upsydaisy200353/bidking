@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: bidking
+    runtime: node
+    plan: free
+    buildCommand: NPM_CONFIG_PRODUCTION=false npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: DATA_DIR
+        value: /tmp/bidking-data

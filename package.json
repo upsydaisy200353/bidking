@@ -1,0 +1,21 @@
+{
+  "name": "bidking",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "build": "npm run build --prefix client && npm run build --prefix server",
+    "start": "cross-env NODE_ENV=production node server/dist/index.js",
+    "test": "npm run test --prefix server",
+    "postinstall": "npm install --include=dev --prefix server && npm install --include=dev --prefix client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3"
+  }
+}
